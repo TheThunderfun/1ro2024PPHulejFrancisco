@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica Parcial</title>
+    <link rel="stylesheet" href="Style.css">
+
+</head>
+
+<body>
+
+    <div class="contenedorGrid" id="contenedorGrid">
+        <div class="contenedor">
+            <div class="contenedor"><b>Form Datos<br></b>
+            </div>
+            <div class="invContenedor">
+                <div class="invContenedor">Filtrar Por:
+                    <select id="filtroSelect">
+                        <option value="Todos">Todos</option>
+                        <option value="Ciudadano">Ciudadano</option>
+                        <option value="Extranjero">Extranjero</option>
+                    </select>
+                </div>
+                <div class="invContenedor">Calcular Edad Promedio:
+                    <input type="text" name="edadPromedio" id="inputEdad" readonly />
+                    <button type="button" id="buttonPromedio">Calcular</button>
+                </div>
+                <div class="invContenedor">Mostrar Columnas:</div>
+                <label>
+                    ID
+                    <input type="checkbox" name="ID" class="checkbox" checked value="0">
+                </label>
+                <label>
+                    Nombre
+                    <input type="checkbox" name="Nombre" class="checkbox" checked value="1">
+                </label>
+                <label>
+                    Apellido
+                    <input type="checkbox" name="Apellido" class="checkbox" checked value="2">
+                </label>
+                <label>
+                    FechaNacimiento
+                    <input type="checkbox" name="Edad" class="checkbox" checked value="3">
+                </label>
+                <label>
+                    PaisOrigen
+                    <input type="checkbox" name="Ventas" class="checkbox" checked value="4">
+                </label>
+                <label>
+                    DNI
+                    <input type="checkbox" name="Sueldo" class="checkbox" checked value="5">
+                </label>
+
+            </div>
+            <table class="tablaDatos" id="tablaDatos">
+                <thead>
+                    <tr>
+                        <th><button class="orden">ID</button></th>
+                        <th><button class="orden">Nombre</button></th>
+                        <th><button class="orden">Apellido</button></th>
+                        <th><button class="orden">FechaNacimiento</button></th>
+                        <th class="Extranjero"><button class="orden">Pais Origen</button></th>
+                        <th class="Ciudadano"><button class="orden">DNI</button></th>
+                    </tr>
+                </thead>
+                <tbody id="itemsTabla">
+                </tbody>
+            </table>
+            <button id="botonAgregar">Agregar</button>
+        </div>
+
+    </div>
+    <div class="FormAgregar" id="FormAgregar">
+        <h2><b>Formulario ABM</b><br></h2>
+        <label>id:</label><input type="text" name="inputId" readonly /><br>
+        <label>Nombre:</label><input type="text" name="inputNombre" /><br>
+        <label>Apellido:</label><input type="text" name="inputApellido" /><br>
+        <label>Edad:</label><input type="text" name="inputEdad" /><br><label> Tipo:</label><select id="TipoSelect">
+            <option value="Extranjero" id="opABMEmpleado">Extranjero</option>
+            <option value="Ciudadano" id="opABMCliente">Ciudadano</option>
+        </select><br>
+        <label id="lbl1">Pais Origen</label><input type="text" name="inp1" /><br>
+        <button id="botonAceptar">Aceptar</button>
+        <button id="botonModificar">Modificar</button>
+        <button id="botonEliminar">Eliminar</button>
+        <button id="botonCancelar">Cancelar</button>
+    </div>
+    <div class="gridEncabezados" id="grid1"></div>
+    <script src="baseDatos.js"></script>
+</body>
+
+</html>
