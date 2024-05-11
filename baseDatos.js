@@ -69,7 +69,7 @@ const cadena = '[{"id":1,"apellido":"Serrano","nombre":"Horacio","fechaNacimient
 
 const personas = JSON.parse(cadena);
 
-const arrayPersonas = [];
+let arrayPersonas = [];
 
 personas.forEach(Element => {
 
@@ -377,8 +377,8 @@ function ValidarDatosAbm() {
         alert("Debe indicar un valor numerico");
         return false;
     }
-    if (parseInt(inputEdad[0].value) === null) {
-        alert("Debe indicar una fecha de nacimiento");
+    if (parseInt(inputEdad[0].value) === null && parseInt(inputEdad[0].value) > 19000401 && parseInt(inputEdad[0].value) < 20240101) {
+        alert("Debe indicar una fecha de nacimiento valida");
         return false;
     }
 
@@ -397,7 +397,7 @@ function ValidarDatosAbm() {
             break;
         case "Extranjero":
             if ((inp1[0].value) == null) {
-                alert("Debe indicar un telefono");
+                alert("Debe ingresar un dato");
                 return false;
             }
             break;
@@ -429,10 +429,10 @@ botonEliminar.addEventListener("click", function () {
 function modificarPersona() {
     if (ValidarDatosAbm() === true) {
 
-        let idPersona = inputID[0].value;
+        let idAux = inputID[0].value;
 
-        personasFiltradas = arrayPersonas.filter(p => p.id === idPersona);
-        console.log(personasFiltradas);
+        personasFiltradas = arrayPersonas.filter(p => p.id !== parseInt(idAux));
+
         if (personasFiltradas.length > 0) {
 
             let personaAModificar = personasFiltradas[0];
@@ -440,9 +440,9 @@ function modificarPersona() {
             personaAModificar.apellido = inputApellido[0].value;
             personaAModificar.fechaNacimiento = inputEdad[0].value;
 
-            if (persona instanceof Ciudadano) {
+            if (personaAModificar instanceof Ciudadano) {
                 personaAModificar.dni = inp1[0].value;
-            } else if (persona instanceof Extranjero) {
+            } else if (personaAModificar instanceof Extranjero) {
                 personaAModificar.paisOrigen = inp1[0].value;
             }
             console.log(personaAModificar)
@@ -456,9 +456,14 @@ function modificarPersona() {
 function eliminarPersona() {
     {
         idEliminar = inputID[0].value;
-        let indice = arrayPersonas.filter(Persona => Persona.id === idEliminar);
-        console.log(arrayPersonas);
-        console.log(indice);
+
+        let indice = arrayPersonas.filter(p => p.id !== parseInt(idEliminar));
+        arrayPersonas = indice;
+        BorrarDatosTabla();
+        cargarPersonasTabla(arrayPersonas);
+        alert("Persona Eliminada correctamente");
+        ocultarFormAbm();
+
     }
 }
 
