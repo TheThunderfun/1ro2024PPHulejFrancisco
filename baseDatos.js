@@ -374,11 +374,11 @@ function ValidarDatosAbm() {
         return false;
     }
     if (isNaN(inputEdad[0].value)) {
-        alert("Debe indicar un valor de edad numerico");
+        alert("Debe indicar un valor numerico");
         return false;
     }
     if (parseInt(inputEdad[0].value) === null) {
-        alert("Debe indicar un valor de edad mayor a 15");
+        alert("Debe indicar una fecha de nacimiento");
         return false;
     }
 
@@ -456,7 +456,7 @@ function modificarPersona() {
 function eliminarPersona() {
     {
         idEliminar = inputID[0].value;
-        let indice = arrayPersonas.filter(Persona => Persona.Id === idEliminar);
+        let indice = arrayPersonas.filter(Persona => Persona.id === idEliminar);
         console.log(arrayPersonas);
         console.log(indice);
     }
